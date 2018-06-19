@@ -1,4 +1,4 @@
-# Resistor Calculate PWA
+# Resistor Calculator PWA
 
 Simple open-source app to calculate a resistor value from it's color codes. Choose between two themes: drop-down menus or color picker mode. Also, available on the web as a progressive web app. 
 
@@ -29,11 +29,15 @@ That's it.
 The PWA is ported to Android and iOS by using Apache Cordova which allows us write mobile applications using standard HTML/CSS/JavaScript. We are able to easily port our PWA to mobile using Cordova. I will demonstrate how to build for the Android platform on Windows 10.
 
 1. Install Apache Cordova and prerequisites (Node.js)
-``` C:\>npm install -g cordova ```
+```
+C:\>npm install -g cordova
+```
 
 2. Create the app project
 Open a PowerShell window in the directory to create the app and invoke the Cordova CLI.
-``` cordova create app com.example.app demoApp ```
+```
+cordova create app com.example.app demoApp
+```
 
 3. Install the Android platform
 Open the created directory and invoke the Cordova CLI again to add platforms.
