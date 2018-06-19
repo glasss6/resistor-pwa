@@ -4,6 +4,7 @@ Simple open-source app to calculate a resistor value from it's color codes. Choo
 
 ## Live Demo
 [Click here for the live demo PWA](https://stephen.glass/resistor)
+
 ![Screenshot of PWA](screenshot.jpg)
 
 ## Getting Started
