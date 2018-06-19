@@ -1,0 +1,413 @@
+/*
+MIT License
+
+Copyright (c) 2018 Stephen Glass
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.backdrop {
+  padding-top: 5em;
+  margin: auto;
+  text-align: center;
+}
+.resistor {
+  font-size: 2em;
+}
+
+
+@media only screen and (max-height: 650px) { /* Settings if screen isn't tall enough..reduce resistor (iPhone 5/SE)*/ 
+.resistor > * {
+  margin-right: -0.3em;
+  display: inline-block;
+  /*background: linear-gradient(white -10%, rgb(255, 187, 122)); /* Resistor color with reflection gradient */
+  background: linear-gradient(rgb(255, 172, 92), white, rgb(255, 172, 92));
+  height: 1.95em;
+  width: 1em;
+}
+
+.resistor .band {
+  position: relative;
+  width: 1.2em;
+  height: 1.2em;
+  margin-bottom: .4em;
+}
+.resistor .band-color {
+  content: ' ';
+  position: absolute;
+  left: .3em;
+  width: 0.5em;
+  height: 1.2em;
+}
+
+.band-selector .location {
+  font-size: 0.75em;
+  padding-bottom: 0.5em;
+}
+
+}
+
+.scrollOptions {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media only screen and (min-height: 650px) {
+.resistor > * {
+  margin-right: -0.3em;
+  display: inline-block;
+  /*background: linear-gradient(white -10%, rgb(255, 187, 122)); /* Resistor color with reflection gradient */
+  background: linear-gradient(rgb(255, 172, 92), white, rgb(255, 172, 92));
+  height: 2.95em;
+  width: 2em;
+}
+
+.resistor .band {
+  position: relative;
+  width: 1.2em;
+  height: 2.2em;
+  margin-bottom: .4em;
+}
+.resistor .band-color {
+  content: ' ';
+  position: absolute;
+  left: .3em;
+  width: 0.5em;
+  height: 2.2em;
+}
+
+.band-selector .location {
+  font-size: 1em;
+  padding-bottom: 0.5em;
+}
+}
+
+@media only screen and (min-width: 333px) {
+.resistor .wire {
+  width: 1em;
+  height: 0.6em;
+  background: 0;
+  background-color: rgb(102, 102, 102);
+  margin-bottom: 1.2em;
+}
+.resistor .wire-right {
+  margin-left: 0.02em;
+}
+}
+
+@media only screen and (max-width: 333px) { /* Hide the wires if the screen is too small */
+.resistor .wire {
+  width: 0em;
+  height: 0.6em;
+  background: 0;
+  background-color: rgb(102, 102, 102);
+  margin-bottom: 1.2em;
+}
+.resistor .wire-right {
+  margin-left: 0em;
+}
+}
+
+.resistor .left,
+.resistor .right {
+  border-radius: 15px;
+}
+
+.resistor .band-color.black {
+  background: linear-gradient(#000000, #000000);
+}
+.resistor .band-color.brown {
+  background: linear-gradient(#944a00, #944a00);
+}
+.resistor .band-color.red {
+  background: linear-gradient(#ff0000, #ff0000);
+}
+.resistor .band-color.orange {
+  background: linear-gradient(#ff8000, #ff8000);
+}
+.resistor .band-color.yellow {
+  background: linear-gradient(#ffff00, #ffff00);
+}
+.resistor .band-color.green {
+  background: linear-gradient(#00ff00, #00ff00);
+}
+.resistor .band-color.blue {
+  background: linear-gradient(#0000ff, #0000ff);
+}
+.resistor .band-color.violet {
+  background: linear-gradient(#9000ff, #9000ff);
+}
+.resistor .band-color.grey {
+  background: linear-gradient(#808080, #808080);
+}
+.resistor .band-color.white {
+  background: linear-gradient(#ffffff, #ffffff);
+}
+.resistor .band-color.gold {
+  background: linear-gradient(#D4AF37, #D4AF37);
+}
+.resistor .band-color.silver {
+  background: linear-gradient(#bfbfbf, #bfbfbf);
+}
+
+.center-picker {
+    width: 100%;
+    /*text-align: center;
+    margin: auto;*/
+    margin-left: -1em;
+}
+
+.picker {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  float: none;
+  height: 2em;
+  width: 2em;
+
+  /* border-radius */
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 5px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+}
+
+.picker-shift {
+  margin-left: 1em;
+}
+
+.picker-shift-right {
+  margin-right: 1em;
+}
+
+div.scrollmenu {
+  overflow-x: auto;
+  overflow-y: visible;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dummy-picker {
+  display: inline-block;
+  vertical-align: middle;
+  height: 1em;
+  width: 1em;
+
+  /* border-radius */
+  /*-webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;*/
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 5px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+
+  opacity: 0.8;
+}
+
+@media only screen and (max-height: 569px) { /* Hide the wires if the screen is too small */
+div.scrollmenu a {
+  margin-top: 0.1em;
+  margin-bottom: 0.5em;
+  display: inline-block;
+  float: none;
+  height: 2.1em;
+  width: 2.1em;
+  text-align: center;
+
+  /* border-radius */
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 5px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+
+  opacity: 0.8;
+  transition: 0.3s;
+}
+}
+
+@media only screen and (min-height: 569px) {
+div.scrollmenu a {
+  margin-top: 0.1em;
+  margin-bottom: 0.5em;
+  display: inline-block;
+  float: none;
+  height: 2.65em;
+  width: 2.65em;
+  text-align: center;
+
+  /* border-radius */
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 5px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+
+  opacity: 0.8;
+  transition: 0.3s;
+}
+}
+
+div.picker-menu {
+  display: inline-block;
+  float: none;
+  height: 2em;
+  width: 2em;
+  text-align: center;
+
+  /* border-radius */
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 5px;
+  -moz-box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.picker-menu-text {
+  vertical-align: 0.5em; 
+  padding-left: 1em;
+}
+
+div.scrollmenu a:hover
+{
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+
+.picker.black {
+  background-color: #000000;
+}
+
+.picker.brown {
+  background-color: #944a00;
+}
+
+.picker.red {
+  background-color: #ff0000;
+}
+
+.picker.orange {
+  background-color: #ff8000;
+}
+
+.picker.yellow {
+  background-color: #ffff00;
+}
+
+.picker.green {
+  background-color: #00ff00;
+}
+
+.picker.blue {
+  background-color: #0000ff;
+}
+
+.picker.violet {
+  background-color: #9000ff;
+}
+
+.picker.grey {
+  background-color: #808080;
+}
+
+.picker.white {
+  background-color: #ffffff;
+}
+
+.picker.gold {
+  background-color: #D4AF37;
+}
+
+.picker.silver {
+  background-color: #bfbfbf;
+}
+
+.scrollmenu-black {
+  background-color: #000000;
+}
+
+.scrollmenu-brown {
+  background-color: #944a00;
+}
+
+.scrollmenu-red {
+  background-color: #ff0000;
+}
+
+.scrollmenu-orange {
+  background-color: #ff8000;
+}
+
+.scrollmenu-yellow {
+  background-color: #ffff00;
+}
+
+.scrollmenu-green {
+  background-color: #00ff00;
+}
+
+.scrollmenu-blue {
+  background-color: #0000ff;
+}
+
+.scrollmenu-violet {
+  background-color: #9000ff;
+}
+
+.scrollmenu-grey {
+  background-color: #808080;
+}
+
+.scrollmenu-white {
+  background-color: #ffffff;
+}
+
+.scrollmenu-gold {
+  background-color: #d4af35;
+}
+
+.scrollmenu-silver {
+  background-color: #bfbfbf;
+}

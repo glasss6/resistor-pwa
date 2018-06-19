@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="glass.stephen.resistor" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Resistor</name>
+    <description>
+        Simple app to calculate a resistor value from color codes.
+    </description>
+    <author email="stephen@stephen.glass" href="https://stephen.glass">
+        Stephen Glass
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="mailto:*" />
+    <preference name="StatusBarBackgroundColor" value="#2F3BA2" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon density="mdpi" src="/resistor/images/windows10/Square44x44Logo.targetsize-48.png" />
+        <icon density="mdpi" src="/resistor/images/windows10/Square44x44Logo.targetsize-48_altform-unplated.png" />
+        <icon density="xxxhdpi" src="/resistor/images/android/android-launchericon-192-192.png" />
+        <icon density="xxhdpi" src="/resistor/images/android/android-launchericon-144-144.png" />
+        <icon density="xhdpi" src="/resistor/images/android/android-launchericon-96-96.png" />
+        <icon density="hdpi" src="/resistor/images/android/android-launchericon-72-72.png" />
+        <icon density="mdpi" src="/resistor/images/android/android-launchericon-48-48.png" />
+        <icon density="mdpi" src="/resistor/images/chrome/chrome-extensionmanagementpage-48-48.png" />
+        <icon density="mdpi" src="/resistor/images/firefox/firefox-general-48-48.png" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <icon height="100" src="/resistor/images/windows10/StoreLogo.scale-200.png" width="100" />
+        <icon height="50" src="/resistor/images/windows10/StoreLogo.scale-100.png" width="50" />
+        <icon height="50" src="/resistor/images/windows10/StoreLogo.png" width="50" />
+        <icon height="120" src="/resistor/images/windows/windows-squarelogo-120-120.png" width="120" />
+        <icon height="50" src="/resistor/images/windows/windows-storelogo-50-50.png" width="50" />
+        <icon height="120" src="/resistor/images/windows/windowsphone-storelogo-120-120.png" width="120" />
+        <icon height="50" src="/resistor/images/windows/windowsphone-storelogo-50-50.png" width="50" />
+        <icon height="144" src="/resistor/images/android/android-launchericon-144-144.png" width="144" />
+        <icon height="72" src="/resistor/images/android/android-launchericon-72-72.png" width="72" />
+        <icon height="180" src="/resistor/images/ios/ios-appicon-180-180.png" width="180" />
+        <icon height="152" src="/resistor/images/ios/ios-appicon-152-152.png" width="152" />
+        <icon height="120" src="/resistor/images/ios/ios-appicon-120-120.png" width="120" />
+        <icon height="76" src="/resistor/images/ios/ios-appicon-76-76.png" width="76" />
+        <splash height="1334" src="/resistor/images/ios/ios-launchimage-750-1334.png" width="750" />
+        <splash height="2208" src="/resistor/images/ios/ios-launchimage-1242-2208.png" width="1242" />
+        <splash height="1242" src="/resistor/images/ios/ios-launchimage-2208-1242.png" width="2208" />
+        <splash height="960" src="/resistor/images/ios/ios-launchimage-640-960.png" width="640" />
+        <splash height="1136" src="/resistor/images/ios/ios-launchimage-640-1136.png" width="640" />
+        <splash height="2048" src="/resistor/images/ios/ios-launchimage-1536-2048.png" width="1536" />
+        <splash height="1536" src="/resistor/images/ios/ios-launchimage-2048-1536.png" width="2048" />
+        <splash height="1024" src="/resistor/images/ios/ios-launchimage-768-1024.png" width="768" />
+        <splash height="768" src="/resistor/images/ios/ios-launchimage-1024-768.png" width="1024" />
+    </platform>
+    <preference name="Fullscreen" value="false" />
+    <allow-navigation hap-rule="yes" href="https://stephen.glass/resistor/*" />
+    <platform name="windows">
+        <icon height="71" src="/resistor/images/windows10/Square71x71Logo.scale-100.png" width="71" />
+        <icon height="150" src="/resistor/images/windows10/Square150x150Logo.scale-100.png" width="150" />
+        <splash height="300" src="/resistor/images/windows10/Wide310x150Logo.scale-200.png" width="620" />
+        <icon height="150" src="/resistor/images/windows10/Wide310x150Logo.scale-100.png" width="310" />
+        <icon height="310" src="/resistor/images/windows10/Square310x310Logo.scale-100.png" width="310" />
+        <icon height="44" src="/resistor/images/windows10/Square44x44Logo.scale-100.png" width="44" />
+        <icon height="50" src="/resistor/images/windows10/StoreLogo.scale-100.png" width="50" />
+        <icon height="50" src="/resistor/images/windows10/StoreLogo.png" width="50" />
+        <splash height="300" src="/resistor/images/windows10/SplashScreen.scale-100.png" width="620" />
+        <icon height="30" src="/resistor/images/windows/windows-smallsquare-30-30.png" width="30" />
+        <splash height="300" src="/resistor/images/windows/windows-splashscreen-620-300.png" width="620" />
+        <icon height="150" src="/resistor/images/windows/windows-squarelogo-150-150.png" width="150" />
+        <icon height="120" src="/resistor/images/windows/windows-squarelogo-120-120.png" width="120" />
+        <icon height="70" src="/resistor/images/windows/windows-storelogo-70-70.png" width="70" />
+        <icon height="50" src="/resistor/images/windows/windows-storelogo-50-50.png" width="50" />
+        <icon height="106" src="/resistor/images/windows/windowsphone-appicon-106-106.png" width="106" />
+        <icon height="44" src="/resistor/images/windows/windowsphone-appicon-44-44.png" width="44" />
+        <icon height="360" src="/resistor/images/windows/windowsphone-mediumtile-360-360.png" width="360" />
+        <icon height="150" src="/resistor/images/windows/windowsphone-mediumtile-150-150.png" width="150" />
+        <icon height="170" src="/resistor/images/windows/windowsphone-smalltile-170-170.png" width="170" />
+        <icon height="71" src="/resistor/images/windows/windowsphone-smalltile-71-71.png" width="71" />
+        <icon height="120" src="/resistor/images/windows/windowsphone-storelogo-120-120.png" width="120" />
+        <icon height="70" src="/resistor/images/windows/windowsphone-storelogo-70-70.png" width="70" />
+        <icon height="50" src="/resistor/images/windows/windowsphone-storelogo-50-50.png" width="50" />
+        <icon height="120" src="/resistor/images/ios/ios-appicon-120-120.png" width="120" />
+    </platform>
+    <platform name="wp8">
+        <icon height="62" src="/resistor/images/windows/windowsphone-appicon-62-62.png" width="62" />
+    </platform>
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
+    <plugin name="cordova-plugin-velda-devicefeedback" spec="https://github.com/VVelda/device-feedback" />
+    <engine name="android" spec="^7.0.0" />
+</widget>

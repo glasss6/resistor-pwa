@@ -1,0 +1,398 @@
+<!--
+MIT License
+
+Copyright (c) 2018 Stephen Glass
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resistor Calculator</title>
+  <meta name="description" content="Calculate the value of a resistor" />
+
+
+  <link rel="stylesheet" type="text/css" href="styles/inline2.css">
+  <link rel="stylesheet" type="text/css" href="styles/resistor.css">
+  <link rel="stylesheet" type="text/css" href="styles/hamburger.css">
+  <link rel="stylesheet" type="text/css" href="styles/dropdown.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="manifest" href="manifest.json">
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Resistor Calculator">
+  <meta name="theme-color" content="#2F3BA2">
+
+  <script src="app.js"></script> <!-- Load source code -->
+</head>
+<body onload="checkTheme();">
+
+  <header class="header">
+    <div class="hamburger-container" id="menuToggle">
+      <input type="checkbox" id="hamburgerCheck" onclick="hamburgerCheck()" onchange="feedback()"/>
+      <div class="hamburger"></div>
+      <div class="hamburger"></div>
+      <div class="hamburger"></div>
+
+      <ul id="menu">
+        <a onclick="hamburgerResult(0); return false;"><li>
+          <i class="fa fa-info-circle" aria-hidden="true"></i> About
+        </li></a>
+        <a onclick="hamburgerResult(1); return false;"><li>
+          <i class="fa fa-list-ul" aria-hidden="true"></i>
+          <span id="themeStatus"> Switch to dropdowns</span>
+        </li></a>
+      </ul>
+    </div>
+    <h1 class="header__title">Resistor Calculator</h1>
+    <button id="butRefresh" class="headerButton" aria-label="Refresh" onclick="location.reload()"></button>
+  </header>
+
+  <div id="mainBody" class="scrollOptions">
+  <div class="backdrop">  
+    <div class="resistor">
+      <div class="wire"></div>
+      <div class="left"></div>
+
+      <div class="band"><div id="band1" class="band-color red"></div></div>
+      <div class="band"><div id="band2" class="band-color black"></div></div>
+      <div class="band"><div id="band3" class="band-color red"></div></div>
+      <div class="band"><div id="band4" class="band-color gold"></div></div>
+
+      <div class="right"></div>
+      <div class="wire wire-right"></div>
+    </div>
+    <div style="font-size: 1.5em; padding-top: 0.1em;" id="resistor-calculated">2.00K &Omega; &plusmn; 5%</div>
+   </div>
+
+  <main class="main band-selector">
+    <div class="card cardTemplate">
+      <div class="location" id="location-1"><span class="dummy-picker scrollmenu-red"></span> Band 1 (Red)</div>
+      <div class="center-picker" id="center-1">
+        <div id="dropdown-area-1"></div>
+        <div class="scrollmenu" id="1">
+          <a class="picker-shift scrollmenu-brown" id="brown" onclick="clickColor(1, 'Brown')"></a>
+          <a class="picker-shift scrollmenu-red" id="red" onclick="clickColor(1, 'Red')"></a>
+          <a class="picker-shift scrollmenu-orange" id="orange" onclick="clickColor(1, 'Orange')"></a>
+          <a class="picker-shift scrollmenu-yellow" id="yellow" onclick="clickColor(1, 'Yellow')"></a>
+          <a class="picker-shift scrollmenu-green" id="green" onclick="clickColor(1, 'Green')"></a>
+          <a class="picker-shift scrollmenu-blue" id="blue" onclick="clickColor(1, 'Blue')"></a>
+          <a class="picker-shift scrollmenu-violet" id="violet" onclick="clickColor(1, 'Violet')"></a>
+          <a class="picker-shift scrollmenu-grey" id="grey" onclick="clickColor(1, 'Grey')"></a>
+          <a class="picker-shift picker-shift-right scrollmenu-white" id="white" onclick="clickColor(1, 'White')"></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <main class="main band-selector" style="margin-top: -1em;">
+    <div class="card cardTemplate">
+
+      <div class="location" id="location-2"><span class="dummy-picker scrollmenu-black"></span> Band 2 (Black)</div>
+      <div class="center-picker" id="center-2">
+        <div id="dropdown-area-2"></div>
+        <div class="scrollmenu" id="2">
+          <a class="picker-shift scrollmenu-black" id="black" onclick="clickColor(2, 'Black')"></a>
+          <a class="picker-shift scrollmenu-brown" id="brown" onclick="clickColor(2, 'Brown')"></a>
+          <a class="picker-shift scrollmenu-red" id="red" onclick="clickColor(2, 'Red')"></a>
+          <a class="picker-shift scrollmenu-orange" id="orange" onclick="clickColor(2, 'Orange')"></a>
+          <a class="picker-shift scrollmenu-yellow" id="yellow" onclick="clickColor(2, 'Yellow')"></a>
+          <a class="picker-shift scrollmenu-green" id="green" onclick="clickColor(2, 'Green')"></a>
+          <a class="picker-shift scrollmenu-blue" id="blue" onclick="clickColor(2, 'Blue')"></a>
+          <a class="picker-shift scrollmenu-violet" id="violet" onclick="clickColor(2, 'Violet')"></a>
+          <a class="picker-shift scrollmenu-grey" id="grey" onclick="clickColor(2, 'Grey')"></a>
+          <a class="picker-shift picker-shift-right scrollmenu-white" id="white" onclick="clickColor(2, 'White')"></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <main class="main band-selector" style="margin-top: -1em;">
+    <div class="card cardTemplate">
+      <div class="location" id="location-3"><span class="dummy-picker scrollmenu-red"></span> Band 3 (Red)</div>
+      <div class="center-picker" id="center-3">
+        <div id="dropdown-area-3"></div>
+        <div class="scrollmenu" id="3">
+          <a class="picker-shift scrollmenu-silver" id="silver" onclick="clickColor(3, 'Silver')"></a>
+          <a class="picker-shift scrollmenu-gold" id="gold" onclick="clickColor(3, 'Gold')"></a>
+          <a class="picker-shift scrollmenu-black" id="black" onclick="clickColor(3, 'Black')"></a>
+          <a class="picker-shift scrollmenu-brown" id="brown" onclick="clickColor(3, 'Brown')"></a>
+          <a class="picker-shift scrollmenu-red" id="red" onclick="clickColor(3, 'Red')"></a>
+          <a class="picker-shift scrollmenu-orange" id="orange" onclick="clickColor(3, 'Orange')"></a>
+          <a class="picker-shift scrollmenu-yellow" id="yellow" onclick="clickColor(3, 'Yellow')"></a>
+          <a class="picker-shift scrollmenu-green" id="green" onclick="clickColor(3, 'Green')"></a>
+          <a class="picker-shift scrollmenu-blue" id="blue" onclick="clickColor(3, 'Blue')"></a>
+          <a class="picker-shift picker-shift-right scrollmenu-violet" id="violet" onclick="clickColor(3, 'Violet')"></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <main class="main band-selector" style="margin-top: -1em;">
+    <div class="card cardTemplate">
+      <div class="location" id="location-4"><span class="dummy-picker scrollmenu-gold"></span> Band 4 (Gold)</div>
+      <div class="center-picker" id="center-4">
+        <div id="dropdown-area-4"></div>
+        <div class="scrollmenu" id="4">
+          <a class="picker-shift scrollmenu-brown" id="brown" onclick="clickColor(4, 'Brown')"></a>
+          <a class="picker-shift scrollmenu-red" id="red" onclick="clickColor(4, 'Red')"></a>
+          <a class="picker-shift scrollmenu-gold" id="gold" onclick="clickColor(4, 'Gold')"></a>
+          <a class="picker-shift picker-shift-right scrollmenu-silver" id="silver" onclick="clickColor(4, 'Silver')"></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  </div>
+
+  <div id="dialog-1" class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">Resistor colors</div>
+      <div class="dialog-body">
+        <div class="dropdown-content show">
+
+          <a onclick="clickColor(1, 'Brown')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-brown"></div></td>
+              <td style="width: 45%;">Brown<br><span class="dialog-caption">First significant figure: 1</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'Red')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-red"></div></td>
+              <td style="width: 45%;">Red<br><span class="dialog-caption">First significant figure: 2</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'Orange')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-orange"></div></td>
+              <td style="width: 45%;">Orange<br><span class="dialog-caption">First significant figure: 3</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'Yellow')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-yellow"></div></td>
+              <td style="width: 45%;">Yellow<br><span class="dialog-caption">First significant figure: 4</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'Green')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-green"></div></td>
+              <td style="width: 45%;">Green<br><span class="dialog-caption">First significant figure: 5</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'Blue')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-blue"></div></td>
+              <td style="width: 45%;">Blue<br><span class="dialog-caption">First significant figure: 6</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'Violet')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-violet"></div></td>
+              <td style="width: 45%;">Violet<br><span class="dialog-caption">First significant figure: 7</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'Grey')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-grey"></div></td>
+              <td style="width: 45%;">Grey<br><span class="dialog-caption">First significant figure: 8</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(1, 'White')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-white"></div></td>
+              <td style="width: 45%;">White<br><span class="dialog-caption">First significant figure: 9</span></td>
+          </tr></table></a><hr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dialog-2" class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">Resistor colors</div>
+      <div class="dialog-body">
+        <div class="dropdown-content show">
+
+          <a onclick="clickColor(2, 'Black')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-black"></div></td>
+              <td style="width: 45%;">Black<br><span class="dialog-caption">Second significant figure: 0</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Brown')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-brown"></div></td>
+              <td style="width: 45%;">Brown<br><span class="dialog-caption">Second significant figure: 1</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Red')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-red"></div></td>
+              <td style="width: 45%;">Red<br><span class="dialog-caption">Second significant figure: 2</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Orange')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-orange"></div></td>
+              <td style="width: 45%;">Orange<br><span class="dialog-caption">Second significant figure: 3</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Yellow')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-yellow"></div></td>
+              <td style="width: 45%;">Yellow<br><span class="dialog-caption">Second significant figure: 4</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Green')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-green"></div></td>
+              <td style="width: 45%;">Green<br><span class="dialog-caption">Second significant figure: 5</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Blue')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-blue"></div></td>
+              <td style="width: 45%;">Blue<br><span class="dialog-caption">Second significant figure: 6</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Violet')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-violet"></div></td>
+              <td style="width: 45%;">Violet<br><span class="dialog-caption">Second significant figure: 7</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'Grey')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-grey"></div></td>
+              <td style="width: 45%;">Grey<br><span class="dialog-caption">Second significant figure: 8</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(2, 'White')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-white"></div></td>
+              <td style="width: 45%;">White<br><span class="dialog-caption">Second significant figure: 9</span></td>
+          </tr></table></a><hr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dialog-3" class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">Resistor colors</div>
+      <div class="dialog-body">
+        <div class="dropdown-content show">
+
+          <a onclick="clickColor(3, 'Silver')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-silver"></div></td>
+              <td style="width: 50%;">Silver<br><span class="dialog-caption">Multiplier: 0.01</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Gold')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-gold"></div></td>
+              <td style="width: 48%;">Gold<br><span class="dialog-caption">Multiplier: 0.1</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Black')"><table><tr>
+              <td style="width: 50%;"><div class="picker-menu scrollmenu-black"></div></td>
+              <td style="width: 45%;">Black<br><span class="dialog-caption">Multiplier: 1</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Brown')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-brown"></div></td>
+              <td style="width: 46%;">Brown<br><span class="dialog-caption">Multiplier: 10</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Red')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-red"></div></td>
+              <td style="width: 48%;">Red<br><span class="dialog-caption">Multiplier: 100</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Orange')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-orange"></div></td>
+              <td style="width: 45%;">Orange<br><span class="dialog-caption">Multiplier: 1k</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Yellow')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-yellow"></div></td>
+              <td style="width: 48%;">Yellow<br><span class="dialog-caption">Multiplier: 10k</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Green')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-green"></div></td>
+              <td style="width: 51%;">Green<br><span class="dialog-caption">Multiplier: 100k</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Blue')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-blue"></div></td>
+              <td style="width: 47%;">Blue<br><span class="dialog-caption">Multiplier: 1M</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(3, 'Violet')"><table><tr>
+              <td style="width: 45%;"><div class="picker-menu scrollmenu-violet"></div></td>
+              <td style="width: 50%;">Violet<br><span class="dialog-caption">Multiplier: 10M</span></td>
+          </tr></table></a><hr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="dialog-4" class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">Resistor colors</div>
+      <div class="dialog-body">
+        <div class="dropdown-content show">
+
+          <a onclick="clickColor(4, 'Brown')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-brown"></div></td>
+              <td style="width: 45%;">Brown<br><span class="dialog-caption">Tolerance: &plusmn; 1%</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(4, 'Red')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-red"></div></td>
+              <td style="width: 45%;">Red<br><span class="dialog-caption">Tolerance: &plusmn; 2%</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(4, 'Gold')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-gold"></div></td>
+              <td style="width: 45%;">Gold<br><span class="dialog-caption">Tolerance: &plusmn; 5%</span></td>
+          </tr></table></a><hr>
+
+          <a onclick="clickColor(4, 'Silver')"><table><tr>
+              <td style="width: 25%;"><div class="picker-menu scrollmenu-silver"></div></td>
+              <td style="width: 47%;">Silver<br><span class="dialog-caption">Tolerance: &plusmn; 10%</span></td>
+          </tr></table></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dialog-5" class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">About</div>
+      <div class="dialog-body">
+        Created by Stephen Glass<br>
+        <a href="https://stephen.glass">https://stephen.glass</a>
+
+        <br><br>MIT License &copy;<br>
+        Copyright 2018 Stephen Glass
+      </div>
+    </div>
+  </div>
+
+  <div class="loader" hidden>
+    <svg viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>
+  <script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

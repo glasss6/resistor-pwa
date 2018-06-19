@@ -1,0 +1,70 @@
+{
+  "_from": "git+https://github.com/VVelda/device-feedback.git",
+  "_id": "cordova-plugin-velda-devicefeedback@0.0.2",
+  "_inBundle": false,
+  "_location": "/cordova-plugin-velda-devicefeedback",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/VVelda/device-feedback",
+    "rawSpec": "https://github.com/VVelda/device-feedback",
+    "saveSpec": "git+https://github.com/VVelda/device-feedback.git",
+    "fetchSpec": "https://github.com/VVelda/device-feedback.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/VVelda/device-feedback.git#b3efb75a135446b408778452253ef2fdc66c0fdf",
+  "_spec": "https://github.com/VVelda/device-feedback",
+  "_where": "C:\\Github\\resistor-app",
+  "author": {
+    "name": "Jan Velecký"
+  },
+  "bugs": {
+    "url": "https://github.com/VVelda/device-feedback/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-velda-devicefeedback",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Plugin provides a way for haptic and acoustic feedback (native alike) to the user.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0"
+    }
+  ],
+  "homepage": "https://github.com/VVelda/device-feedback",
+  "keywords": [
+    "feedback",
+    "haptic",
+    "acoustic",
+    "aural",
+    "tactile",
+    "sound",
+    "vibrate",
+    "key",
+    "button",
+    "touch",
+    "tap",
+    "vibration",
+    "vibrating",
+    "ux",
+    "user-experience",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "Simplified BSD License",
+  "name": "cordova-plugin-velda-devicefeedback",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VVelda/device-feedback.git"
+  },
+  "version": "0.0.2"
+}
