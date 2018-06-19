@@ -2,6 +2,10 @@
 
 Simple open-source app to calculate a resistor value from it's color codes. Choose between two themes: drop-down menus or color picker mode. Also, available on the web as a progressive web app. 
 
+## Live Demo
+[Click here for the live demo PWA](https://stephen.glass/resistor)
+![Screenshot of PWA](screenshot.jpg)
+
 ## Getting Started
 
 These instructions will guide you to install the software on your own system for development and testing.
