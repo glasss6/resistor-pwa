@@ -82,6 +82,7 @@ function hamburgerResult(param) { // Called when a item on the hamburger menu is
             setDropdowns();
         }
     }
+    hamburgerCheck();
 }
 
 function checkTheme()
@@ -118,6 +119,8 @@ function checkTheme()
             document.getElementById("top-header").style.boxShadow = "none";
         }
     }
+
+    hamburgerCheck();
 
     if(localStorage.getItem("theme")) {
         // Switch to dropdowns
@@ -215,8 +218,14 @@ function parseValue(ohms)
 
 function hamburgerCheck()
 {
-    if(localStorage.getItem("theme")) document.getElementById("themeStatus").innerHTML = "Switch to color pickers";
-    else document.getElementById("themeStatus").innerHTML = "Switch to dropdowns";
+    if(localStorage.getItem("theme")) {
+        document.getElementById("themeStatus").innerHTML = "Switch to color pickers";
+        document.getElementById("theme-switch").innerHTML = "Switch to colors";
+    }
+    else {
+        document.getElementById("themeStatus").innerHTML = "Switch to dropdowns";
+        document.getElementById("theme-switch").innerHTML = "Switch to dropdowns";
+    }
 }
 
 if('serviceWorker' in navigator) {

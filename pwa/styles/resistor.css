@@ -107,17 +107,18 @@ SOFTWARE.
 }
 }
 
-@media only screen and (min-width: 500px) {
+
+@media only screen and (min-width: 732px) {
 .resp-title {
   font-size: 20px;
-}
+  }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 732px) {
   .resp-title {
-    font-size: 10px;
+    font-size: 3.75vw !important;
   }
-  }
+}
 
 @media only screen and (min-width: 333px) {
 .resistor .wire {
