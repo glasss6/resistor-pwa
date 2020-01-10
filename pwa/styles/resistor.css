@@ -108,7 +108,7 @@ SOFTWARE.
 }
 
 
-@media only screen and (min-width: 732px) {
+/*@media only screen and (min-width: 732px) {
 .resp-title {
   font-size: 20px;
   }
@@ -118,7 +118,7 @@ SOFTWARE.
   .resp-title {
     font-size: 3.75vw !important;
   }
-}
+}*/
 
 @media only screen and (min-width: 333px) {
 .resistor .wire {

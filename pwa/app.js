@@ -90,7 +90,6 @@ function checkTheme()
 
     var iframe = getUrlVars()["iframe"];
     if(parseInt(iframe) === 1) {
-        console.log("Here");
         document.getElementById("app-title").style.fontSize = "10px";
         document.getElementById("theme-switch").style.fontSize = "10px";
     }
@@ -109,6 +108,8 @@ function checkTheme()
         document.getElementById("butRefresh").style.backgroundColor = "#000";
         document.getElementById("butRefresh").style.position = "absolute";
         document.getElementById("butRefresh").style.right = "0";
+        document.getElementById("theme-switch-button").style.display = "none";
+        // If iframe, disable button
 
         if(parseInt(bg) === 1) {
             document.getElementById("top-header").style.background = "#fff";
@@ -118,6 +119,10 @@ function checkTheme()
             document.getElementById("top-header").style.background = "#ececec";
             document.getElementById("top-header").style.boxShadow = "none";
         }
+    }
+    else {
+        // Default only show icon
+        document.getElementById("theme-switch").style.display = "none";
     }
 
     hamburgerCheck();
