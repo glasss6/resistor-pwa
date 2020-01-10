@@ -35,6 +35,11 @@ SOFTWARE.
   font-size: 2em;
 }
 
+.switchLink {
+  padding-right: 15px;
+  color: #fff;
+}
+
 
 @media only screen and (max-height: 650px) { /* Settings if screen isn't tall enough..reduce resistor (iPhone 5/SE)*/ 
 .resistor > * {
