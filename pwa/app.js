@@ -57,6 +57,14 @@ var toleranceValues = {
     "Silver" : 10
 }
 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
 function hamburgerResult(param) { // Called when a item on the hamburger menu is selected
     document.getElementById("hamburgerCheck").checked = false; // Hide the menu after selecting an option
     if(param == 0) { // About menu
@@ -78,6 +86,39 @@ function hamburgerResult(param) { // Called when a item on the hamburger menu is
 
 function checkTheme()
 {
+
+    var iframe = getUrlVars()["iframe"];
+    if(parseInt(iframe) === 1) {
+        console.log("Here");
+        document.getElementById("app-title").style.fontSize = "10px";
+        document.getElementById("theme-switch").style.fontSize = "10px";
+    }
+
+    var bg = getUrlVars()["bg"];
+    if(parseInt(bg) === 1) {
+        document.getElementById("body").style.backgroundColor = "#fff";
+    }
+
+    var hide = getUrlVars()["hide"];
+    if(parseInt(hide) === 1) {
+        document.getElementById("app-title").style.display = "none";
+        document.getElementById("theme-switch").style.color = "#000";
+        document.getElementById("menuToggle").style.display = "none";
+        document.getElementById("butRefresh").style.color = "#000";
+        document.getElementById("butRefresh").style.backgroundColor = "#000";
+        document.getElementById("butRefresh").style.position = "absolute";
+        document.getElementById("butRefresh").style.right = "0";
+
+        if(parseInt(bg) === 1) {
+            document.getElementById("top-header").style.background = "#fff";
+            document.getElementById("top-header").style.boxShadow = "none";
+        }
+        else {
+            document.getElementById("top-header").style.background = "#ececec";
+            document.getElementById("top-header").style.boxShadow = "none";
+        }
+    }
+
     if(localStorage.getItem("theme")) {
         // Switch to dropdowns
         setDropdowns();

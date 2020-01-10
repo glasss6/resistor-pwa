@@ -52,14 +52,14 @@ SOFTWARE.
 
   <script src="app.js"></script> <!-- Load source code -->
 </head>
-<body onload="checkTheme();">
+<body onload="checkTheme();" id="body">
 
-  <header class="header">
+  <header class="header" id="top-header">
     <div class="hamburger-container" id="menuToggle">
       <input type="checkbox" id="hamburgerCheck" onclick="hamburgerCheck()"/>
-      <div class="hamburger"></div>
-      <div class="hamburger"></div>
-      <div class="hamburger"></div>
+      <div class="hamburger" id="hamburger1"></div>
+      <div class="hamburger" id="hamburger2"></div>
+      <div class="hamburger" id="hamburger3"></div>
 
       <ul id="menu">
         <a onclick="hamburgerResult(0); return false;"><li>
@@ -71,8 +71,8 @@ SOFTWARE.
         </li></a>
       </ul>
     </div>
-    <h1 class="header__title">Resistor Calculator</h1>
-    <a href="javascript:void(0);" class="switchLink" onclick="hamburgerResult(1);">Switch to dropdowns</a>
+    <h1 class="header__title resp-title" id="app-title">Resistor Calculator</h1>
+    <a href="javascript:void(0);" class="switchLink resp-title" onclick="hamburgerResult(1);" id="theme-switch">Switch to dropdowns</a>
     <button id="butRefresh" class="headerButton" aria-label="Refresh" onclick="location.reload()"></button>
   </header>
 
